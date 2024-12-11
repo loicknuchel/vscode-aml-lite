@@ -3,6 +3,7 @@ import {parseAml} from "./parser";
 import {computeDiagnostics} from "./diagnostics";
 import {AmlCompletion} from "./completion";
 import {AmlRename} from "./rename";
+import {AmlSymbols} from "./symbols";
 import {debounce} from "./utils";
 
 export function activate(context: vscode.ExtensionContext) {
@@ -28,6 +29,7 @@ export function activate(context: vscode.ExtensionContext) {
 		new vscode.Disposable(() => diagnostics.dispose()),
 		vscode.languages.registerCompletionItemProvider({language: 'amll'}, new AmlCompletion(), ' ', '('),
 		vscode.languages.registerRenameProvider({language: 'amll'}, new AmlRename()),
+		vscode.languages.registerDocumentSymbolProvider({language: 'amll'}, new AmlSymbols()),
 	)
 }
 

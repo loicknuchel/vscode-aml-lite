@@ -10,3 +10,4 @@ The real one is [published here](https://marketplace.visualstudio.com/items?item
 - [inline errors](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#provide-diagnostics)
 - code completion
 - rename
+- symbol navigation
