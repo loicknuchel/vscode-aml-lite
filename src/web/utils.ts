@@ -1,11 +1,15 @@
 import * as vscode from "vscode";
-import {ParserError, ParserErrorLevel, ParserPosition} from "./parser";
+import {EditorPosition, ParserError, ParserErrorLevel, ParserPosition} from "./parser";
+
+export function positionToAml(position: vscode.Position): EditorPosition {
+    return {line: position.line + 1, column: position.character + 1}
+}
 
 export function errorToDiagnostic(e: ParserError): vscode.Diagnostic {
     return new vscode.Diagnostic(tokenToRange(e.pos.position), e.message, levelToSeverity(e.level))
 }
 
-function tokenToRange(position: ParserPosition): vscode.Range {
+export function tokenToRange(position: ParserPosition): vscode.Range {
     return new vscode.Range(position.start.line - 1, position.start.column - 1, position.end.line - 1, position.end.column)
 }
 
@@ -15,6 +19,15 @@ function levelToSeverity(level: ParserErrorLevel): vscode.DiagnosticSeverity {
     else if (level === 'info') { return vscode.DiagnosticSeverity.Information }
     else if (level === 'hint') { return vscode.DiagnosticSeverity.Hint }
     return vscode.DiagnosticSeverity.Error
+}
+
+export function isInside(position: EditorPosition, token: ParserPosition): boolean {
+    const line = position.line
+    const col = position.column
+    const inLines = token.start.line < line && line < token.end.line
+    const startLine = line === token.start.line && token.start.column <= col && (col <= token.end.column || line < token.end.line)
+    const endLine = line === token.end.line && col <= token.end.column && (token.start.column <= col || token.start.line < line)
+    return inLines || startLine || endLine
 }
 
 type Timeout = ReturnType<typeof setTimeout>

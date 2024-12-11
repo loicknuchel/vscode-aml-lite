@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import {parseAml} from "./parser";
 import {computeDiagnostics} from "./diagnostics";
 import {AmlCompletion} from "./completion";
+import {AmlRename} from "./rename";
 import {debounce} from "./utils";
 
 export function activate(context: vscode.ExtensionContext) {
@@ -26,6 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand('vscode-aml-lite.helloWorld', () => vscode.window.showInformationMessage('Hello World from vscode-aml-lite!')),
 		new vscode.Disposable(() => diagnostics.dispose()),
 		vscode.languages.registerCompletionItemProvider({language: 'amll'}, new AmlCompletion(), ' ', '('),
+		vscode.languages.registerRenameProvider({language: 'amll'}, new AmlRename()),
 	)
 }
 
