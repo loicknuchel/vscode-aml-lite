@@ -1,0 +1,8 @@
+users
+  id int pk
+  name varchar
+
+posts
+  id int pk
+  title varchar
+  author int -> users(id)

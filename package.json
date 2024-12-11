@@ -30,6 +30,9 @@
     "lint": "eslint src",
     "run-in-browser": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. ."
   },
+  "dependencies": {
+    "chevrotain": "^10.5.0"
+  },
   "devDependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@types/assert": "^1.5.11",

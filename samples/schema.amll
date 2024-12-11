@@ -1,0 +1,51 @@
+users
+  id int pk
+  name varchar
+  email varchar
+  created_at timestamp
+  updated_at timestamp
+
+credentials
+  provider_id varchar
+  provider_key varchar
+  user_id int -> users(id)
+
+categories
+  id int pk
+  parent_id int -> categories(id)
+  name varchar
+  created_at timestamp
+
+products
+  id int pk
+  category_id int -> categories(id)
+  name varchar
+  created_at timestamp
+  created_by int -> users(id)
+
+carts
+  id int pk
+  created_at timestamp
+  created_by int -> users(id)
+
+cart_items
+  cart_id int -> carts(id)
+  product_id int -> products(id)
+  quantity int
+  created_at timestamp
+
+reviews
+  id int pk
+  user_id int -> users(id)
+  product_id int -> products(id)
+  rating int
+  message text
+  created_at timestamp
+
+events
+  id uuid pk
+  name varchar
+  item_kind varchar
+  item_id int
+  details json
+  created_at timestamp

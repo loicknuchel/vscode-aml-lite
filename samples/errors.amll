@@ -1,0 +1,21 @@
+users
+  id int pk
+  name varchar
+
+posts
+  id int pk
+  title varchar
+  author int -> userss(id)
+  created_by int -> users(idd)
+
+comments
+  id int pk
+  content text
+  author int -> users(id
+
+posts
+  id int pk
+  title varchar
+  content text
+  title varchar
+  created_at timestamp
