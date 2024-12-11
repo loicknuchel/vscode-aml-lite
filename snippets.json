@@ -1,0 +1,27 @@
+{
+  "Primary key": {
+    "prefix": "id",
+    "body": ["id ${1|uuid,int,bigint|} pk"],
+    "description": "A Primary Key column"
+  },
+  "Reference": {
+    "prefix": ["->"],
+    "body": ["-> ${1:entity}(${2:attribute})"]
+  },
+  "Created At": {
+    "prefix": "created_at",
+    "body": ["created_at ${1:timestamp}"]
+  },
+  "Updated At": {
+    "prefix": "updated_at",
+    "body": ["updated_at ${1:timestamp}"]
+  },
+  "Deleted At": {
+    "prefix": "deleted_at",
+    "body": ["deleted_at ${1:timestamp}"]
+  },
+  "Timestamps": {
+    "prefix": "timestamps",
+    "body": ["created_at ${1:timestamp}", "updated_at ${1:timestamp}"]
+  }
+}
