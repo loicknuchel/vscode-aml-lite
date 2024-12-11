@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "AML-lite",
+  "scopeName": "source.amll",
+  "patterns": [
+    {"include": "#entity"},
+    {"include": "#attribute"},
+    {"include": "#type"},
+    {"include": "#keyword"}
+  ],
+  "repository": {
+    "entity": {"patterns": [{"name": "entity.name.type.class.amll", "match": "^[a-zA-Z_][a-zA-Z_0-9]*\\b"}]},
+    "attribute": {"patterns": [{"name": "variable.other.property.amll", "match": "^  [a-zA-Z_][a-zA-Z_0-9]*\\b"}]},
+    "type": {"patterns": [{"name": "storage.type.amll", "match": "\\b(uuid|(var|n)?char2?|character( +varying)?|(tiny|medium|long|ci)?text|(tiny|small|big)?int(eger)?(\\d+)?|numeric|float|double( +precision)?|bool(ean)?|timestamp( +with(out)? +time +zone)?|date(time)?|time( +with(out)? +time +zone)?|interval|json|string|number)\\b"}]},
+    "keyword": {"patterns": [{"name": "keyword.control.aml", "match": "\\bpk\\b"}]}
+  }
+}

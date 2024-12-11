@@ -6,3 +6,4 @@ The real one is [published here](https://marketplace.visualstudio.com/items?item
 ## Features
 
 - language parsing
+- [syntax highlighting](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide)

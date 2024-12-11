@@ -12,6 +12,19 @@
   "browser": "./dist/web/extension.js",
   "activationEvents": [],
   "contributes": {
+    "languages": [{
+      "id": "amll",
+      "extensions": [".amll"],
+      "icon": {
+        "dark": "./assets/icon.svg",
+        "light": "./assets/icon.svg"
+      }
+    }],
+    "grammars": [{
+      "language": "amll",
+      "scopeName": "source.amll",
+      "path": "./syntaxes/amll.tmLanguage.json"
+    }],
     "commands": [{
       "command": "vscode-aml-lite.helloWorld",
       "title": "Hello World"
